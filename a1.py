@@ -1,4 +1,4 @@
-
+"""
 #1
 def helloWorld():
     print("Hello world!")
@@ -57,7 +57,7 @@ def strHalf():
 
     return str[0:int(len(str)//2)]
 
-
+"""
 #10
 def guessingGame(x):
     n=0

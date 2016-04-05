@@ -28,40 +28,51 @@ def tfInput(string):
 
 # ICS4U:
 # PUT ALL OF YOUR FUNCTIONS HERE
+
 #1
 def level2Percent(level):
-            if level=="4+":
-                return 100
-            elif level=="4":
-                return 94
-            elif level=="4-":
-                return 86
-            elif level=="3+":
-                return 79
-            elif level=="3":
-                return 76
-            elif level=="3-":
-                return 72
-            elif level=="2+":
-                return 69
-            elif level=="2":
-                return 66
-            elif level=="2-":
-                return 62
-            elif level=="1+":
-                return 59
-            elif level=="1":
-                return 56
-            elif level=="1-":
-                return 52
-            elif level=="<1" or "< 1":
-                return 40
+    """
+    Translate the level into percentage.
+    """
+
+    # Make each level  equal to a exact number.
+    if level=="4+":
+        return 100
+    elif level=="4":
+        return 94
+    elif level=="4-":
+        return 86
+    elif level=="3+":
+        return 79
+    elif level=="3":
+        return 76
+    elif level=="3-":
+        return 72
+    elif level=="2+":
+        return 69
+    elif level=="2":
+        return 66
+    elif level=="2-":
+        return 62
+    elif level=="1+":
+        return 59
+    elif level=="1":
+        return 56
+    elif level=="1-":
+        return 52
+    elif level=="<1" or "< 1":
+        return 40
 
 
 
 
 #2
 def percent2Level(percent):
+    """
+    Make the grades into Level form.
+    """
+
+    #Let the number equal to a level.
     if percent in range(95,101):
         return "4+"
     if percent in range(87,95):
@@ -94,6 +105,11 @@ def percent2Level(percent):
 
 #3
 def stringCompare(string1,string2):
+    """
+    Compare string1 and string2.
+    """
+
+    #return the answer of the compare result.
     return string1.lower().strip()==string2.lower().strip()
 
 
@@ -101,6 +117,11 @@ def stringCompare(string1,string2):
 
 #4
 def addGrade(datebase,course,assignment,student,grade):
+    """
+    Add a new list into database.
+    """
+
+    #Return the new line.
     return database+[[course,assignment,student,grade]]
 
 
@@ -108,18 +129,28 @@ def addGrade(datebase,course,assignment,student,grade):
 
 #5
 def inputGrades(database):
+    """
+    Get the information from the user and add them to database as a new line.
+    """
+
+    #Asking the information about the course and assignment.
     course=input("What is the name of the class?: ")
     assignment=input("What is the name of the assignment/test?:")
+
+    #Loop ask question from the user.
     while True:
         student=input("Student name:")
         grade=input("Level:")
         database=database+[[course,assignment,student,grade]]
-        response=tfInput("Would you like to input another grade?")
 
+        #Asking the user whether loop or not.
+        response=tfInput("Would you like to input another grade?")
         if response==True:
             pass
         elif response==False:
             break
+
+    #return the answer.
     return database
 
 
@@ -127,20 +158,34 @@ def inputGrades(database):
 
 #6
 def studentAverage(database,student):
+    """
+    Get the average grades of the student.
+    """
+
+    #Creat the new name.
     grades=[ ]
     percentGrades=[]
     sum=0
+
+    #Loop through the database.
     for entry in range(len(database)):
+
+        #Whether the name is same as the student.
         if stringCompare(database[entry][2],student)==True:
+            #Add the score into grades.
             grades.append(database[entry][3])
 
+    #Loop through the grades.
     for i in range(len(grades)):
+        #Translating the score into percentage.
         percentGrades.append(level2Percent(grades[i]))
 
+    #Loop through the percentGrades.
     for a in range(len(percentGrades)):
+        #Get the sum of the percentGrades.
         sum=sum+percentGrades[a]
 
-
+    #Return the average grades.
     return sum/ len(percentGrades)
 
 
@@ -148,20 +193,37 @@ def studentAverage(database,student):
 
 #7
 def courseAverage(database,course):
+    """
+    Calculate average grades of the course and return the answers.
+    """
+
+    #Creat the new name.
     grades=[ ]
     percentGrades=[]
     sum=0
+
+    #Loop through the database.
     for entry in range(len(database)):
+
+        #Compare the course.
         if stringCompare(database[entry][0],course)==True:
+
+            #If the course is same as our type then take out the score.
             grades.append(database[entry][3])
 
+    #Loop through the grades.
     for i in range(len(grades)):
+
+        #Make the grades translate to percentage.
         percentGrades.append(level2Percent(grades[i]))
 
+    #Loop through the grades which is percentage.
     for a in range(len(percentGrades)):
+
+        #Get the sum of the percentGrades.
         sum=sum+percentGrades[a]
 
-
+    #Return the result.
     return sum/ len(percentGrades)
 
 

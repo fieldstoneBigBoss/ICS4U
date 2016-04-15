@@ -27,11 +27,11 @@ def writeString(filename,string):
     Create a new file and write down something.
     """
 
-    #Create a new file and name it.
+    # Create a new file and name it.
     v=open(filename,'w')
-    #Write down something in the file.
+    # Write down something in the file.
     v.write(string)
-    #Close the file.
+    # Close the file.
     v.close()
 
 
@@ -41,13 +41,13 @@ def readString(filename):
     Open the new file and read it.
     """
 
-    #Open the new file.
+    # Open the new file.
     f=open(filename,'r')
-    #Read the information as a string in the new file.
+    # Read the information as a string in the new file.
     string=f.read()
-    #Close the file.
+    # Close the file.
     f.close()
-    #Return the information form the file.
+    # Return the information form the file.
     return string
 
 
@@ -57,13 +57,13 @@ def writeNum(filename,number):
     Create a new file and input a series of number.
     """
 
-    #Make the numbers as a string.
+    # Make the numbers as a string.
     i=str(number)
-    #Open the file.
+    # Open the file.
     f=open(filename,'w')
-    #Input the number.
+    # Input the number.
     f.write(i)
-    #Close the file.
+    # Close the file.
     f.close()
 
 
@@ -73,14 +73,14 @@ def readNum(filename):
     Open the file and read it.
     """
 
-    #Open the file.
+    # Open the file.
     f=open(filename,'r')
-    #Read the information as a number.
+    # Read the information as a number.
     number=f.read()
-    #Close the file.
+    # Close the file.
     f.close()
 
-    #Text the number is a integer or a float number and return it.
+    # Text the number is a integer or a float number and return it.
     try:
         return int(number)
     except ValueError:
@@ -93,14 +93,14 @@ def row2TSV(row):
     Translate a row into TSV form and return it.
     """
 
-    #Create an empty list called string.
+    # Create an empty list called string.
     string=""
 
-    #Loop through the row.
+    # Loop through the row.
     for i in range (len(row)):
-        #Add "\t" behind each element except the last element.
+        # Add "\t" behind each element except the last element.
         string=string+row[i]+"\t"
-    #Return the list.
+    # Return the list.
     return string[0:-1]
 
 def array2TSV(array):
@@ -108,14 +108,14 @@ def array2TSV(array):
     Translate the whole array into TSV form.
     """
 
-    #Create an empty list called string2.
+    # Create an empty list called string2.
     string2=""
 
-    #Loop through the whole array.
+    # Loop through the whole array.
     for a in range (len(array)):
-        #Add "\n" behind each list.
+        # Add "\n" behind each list.
         string2=string2+row2TSV(array[a])+"\n"
-    #Return string2.
+    # Return string2.
     return string2
 
 
@@ -125,17 +125,17 @@ def TSV2array(string):
     Translate TSV form into array.
     """
 
-    #Create an empty list called wholeList.
+    # Create an empty list called wholeList.
     wholeList=[]
 
-    #Split up each list by "\n".
+    # Split up each list by "\n".
     list=string[ :-1].split("\n")
 
-    #Loop through list.
+    # Loop through list.
     for i in range (len(list)):
-        #For each list, split up each element by "\t".
+        # For each list, split up each element by "\t".
         wholeList=wholeList+[list[i].split("\t")]
-    #Return the whole List.
+    # Return the whole List.
     return wholeList
 
 
@@ -145,11 +145,11 @@ def writeTSV(filename,array):
     Write an array and translate it into TSV form, then put it in the new file.
     """
 
-    #Create a new file.
+    # Create a new file.
     f=open(filename,"w")
-    #Translate the array into TSV form and put it into the new file.
+    # Translate the array into TSV form and put it into the new file.
     f.write(array2TSV(array))
-    #Close the file.
+    # Close the file.
     f.close()
 
 
@@ -159,19 +159,19 @@ def readTSV(filename):
     Read the information from the file as an array.
     """
 
-    #Open the new file.
+    # Open the new file.
     f=open(filename,"r")
-    #Translate the information what we read from the file into an array.
+    # Translate the information what we read from the file into an array.
     list=TSV2array(f.read())
-    #Close the file.
+    # Close the file.
     f.close()
-    #Return the list.
+    # Return the list.
     return list
 
 
 
 
-#Input some information into function which shows above so that we can test the program.
+# Input some information into function which shows above so that we can test the program.
 print(writeString('afb.txt','sb'))
 print(readString('afb.txt'))
 print(writeNum('jaman.txt',678))

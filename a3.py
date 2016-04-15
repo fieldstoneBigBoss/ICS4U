@@ -1,7 +1,7 @@
 '''
 Program:    a3.py
 Name:       Jason   Huang
-Date:       13/04/2016
+Date:       15/04/2016
 Desc:       This program is used to create a new file and put the list which one is already translated to TSV form in the new file
             and read the information then translate it to array form and output it from the new file.
 

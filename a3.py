@@ -2,8 +2,8 @@
 Program:    a3.py
 Name:       Jason   Huang
 Date:       13/04/2016
-Desc:       This program is used to create a new file and put the list in it which one is already translated to TSV form
-            and read the information, translate it to array form and output it from the new file.
+Desc:       This program is used to create a new file and put the list which one is already translated to TSV form in the new file
+            and read the information then translate it to array form and output it from the new file.
 
 '''
 
@@ -24,7 +24,7 @@ database = [
 #1
 def writeString(filename,string):
     """
-    Create a new file and write something in it.
+    Create a new file and write down something.
     """
 
     #Create a new file and name it.
@@ -54,10 +54,10 @@ def readString(filename):
 #3
 def writeNum(filename,number):
     """
-    Create a new file and input a number.
+    Create a new file and input a series of number.
     """
 
-    #Make the number as a string.
+    #Make the numbers as a string.
     i=str(number)
     #Open the file.
     f=open(filename,'w')
@@ -96,9 +96,9 @@ def row2TSV(row):
     #Create an empty list called string.
     string=""
 
-    #Loop through row.
+    #Loop through the row.
     for i in range (len(row)):
-        #Add \t behind each element except the last element.
+        #Add "\t" behind each element except the last element.
         string=string+row[i]+"\t"
     #Return the list.
     return string[0:-1]
@@ -113,7 +113,7 @@ def array2TSV(array):
 
     #Loop through the whole array.
     for a in range (len(array)):
-        #Add \n behind each list.
+        #Add "\n" behind each list.
         string2=string2+row2TSV(array[a])+"\n"
     #Return string2.
     return string2
@@ -135,14 +135,14 @@ def TSV2array(string):
     for i in range (len(list)):
         #For each list, split up each element by "\t".
         wholeList=wholeList+[list[i].split("\t")]
-    #Return whole List.
+    #Return the whole List.
     return wholeList
 
 
 #7
 def writeTSV(filename,array):
     """
-    Write an array and translate that into TSV form, then put it in the new file.
+    Write an array and translate it into TSV form, then put it in the new file.
     """
 
     #Create a new file.
@@ -171,7 +171,7 @@ def readTSV(filename):
 
 
 
-#Input some information into function which shows above and test the program.
+#Input some information into function which shows above so that we can test the program.
 print(writeString('afb.txt','sb'))
 print(readString('afb.txt'))
 print(writeNum('jaman.txt',678))
